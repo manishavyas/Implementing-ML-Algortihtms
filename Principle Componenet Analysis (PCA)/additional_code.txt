@@ -1,0 +1,72 @@
+df6 = df.drop(['target'],axis=1)
+c=[]
+a = []
+k = 0
+for i in range(1,33):
+    df7 = pd.DataFrame(data = df6.iloc[:,i])
+    c.append(df7.columns.values[0])
+    a.append(mse_cv(df7,df['target']))
+    
+    d = pd.DataFrame({'feature':c,'MSE':a})
+    df9 = df6.drop(d.loc[d['MSE'].idxmin()][1],axis=1)
+    df8 =df[d.loc[d['MSE'].idxmin()][1]]
+
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
+    
+for j in range((df9.shape[1]-1)):
+    df11 = pd.concat([df8,df9.iloc[:,j]],axis=1)
+    c.append(df11.columns.values)
+    a.append(mse_cv(df11,df['target']))
+    d = pd.DataFrame({'feature':c,'MSE':a})
+    
+df9 = df6.drop(d.loc[d['MSE'].idxmin()][1],axis=1)
+df8 =pd.concat([df8,df[d.loc[d['MSE'].idxmin()][1][1]]],axis=1)
+    
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
+
+for j in range((df9.shape[1]-1)):
+
+    df11 = pd.concat([df8,df9.iloc[:,j]],axis=1)
+    c.append(df11.columns.values)
+    a.append(mse_cv(df11,df['target']))
+    d = pd.DataFrame({'feature':c,'MSE':a})
+
+
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
+
+df9 = df6.drop(d.loc[d['MSE'].idxmin()][1],axis=1)
+df8 =pd.concat([df8,df[d.loc[d['MSE'].idxmin()][1][2]]],axis=1)
+
+for j in range((df9.shape[1]-1)):
+
+    df11 = pd.concat([df8,df9.iloc[:,j]],axis=1)
+    c.append(df11.columns.values)
+    a.append(mse_cv(df11,df['target']))
+    d = pd.DataFrame({'feature':c,'MSE':a})
+    
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
+
+df9 = df6.drop(d.loc[d['MSE'].idxmin()][1],axis=1)
+df8 =pd.concat([df8,df[d.loc[d['MSE'].idxmin()][1][3]]],axis=1)
+
+for j in range((df9.shape[1]-1)):
+    df11 = pd.concat([df8,df9.iloc[:,j]],axis=1)
+    c.append(df11.columns.values)
+    a.append(mse_cv(df11,df['target']))
+    d = pd.DataFrame({'feature':c,'MSE':a})
+    
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
+
+df9 = df6.drop(d.loc[d['MSE'].idxmin()][1],axis=1)
+df8 =pd.concat([df8,df[d.loc[d['MSE'].idxmin()][1][4]]],axis=1)
+
+for j in range((df9.shape[1]-1)):
+
+    df11 = pd.concat([df8,df9.iloc[:,j]],axis=1)
+    c.append(df11.columns.values)
+    a.append(mse_cv(df11,df['target']))
+    d = pd.DataFrame({'feature':c,'MSE':a})
+
+print(d)
+    
+print(d.loc[d['MSE'].idxmin()][1],d.loc[d['MSE'].idxmin()][0])
